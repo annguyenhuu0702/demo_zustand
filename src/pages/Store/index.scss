@@ -1,0 +1,43 @@
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  background: #f3f4f6;
+  padding: 24px;
+
+  h3 {
+    font-size: 24px;
+    margin-bottom: 0;
+  }
+}
+
+.tabs-cus {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: -1px;
+  padding: 0 24px;
+
+  .ant-tabs-nav {
+    margin-bottom: 0 !important;
+  }
+
+  .tabs-filter {
+    span {
+      padding: 8px 16px;
+      font-size: 14px;
+      &:hover {
+        cursor: pointer;
+        background: rgba(0, 0, 0, 0.06);
+        border-radius: 4px;
+        transition: ease-in 0.4s;
+      }
+    }
+  }
+}
+
+.table-cus {
+  border-top: 1px solid lightgrey;
+  .ant-table-cell {
+    font-size: 12px !important;
+  }
+}
