@@ -50,7 +50,7 @@ const Sidebar: React.FC = () => {
   } = theme.useToken();
 
   return (
-    <Layout style={{ minHeight: "100vh" }}>
+    <Layout className="main-layout">
       <Sider className="custom-aside">
         <div />
         <Menu

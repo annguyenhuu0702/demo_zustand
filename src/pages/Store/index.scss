@@ -41,3 +41,10 @@
     font-size: 12px !important;
   }
 }
+
+.icon-delete {
+  transition: ease-in 0.4;
+  &:hover {
+    color: red;
+  }
+}

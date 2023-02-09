@@ -21,4 +21,47 @@
       }
     }
   }
+
+  .cus-form {
+    .content-left {
+      padding: 20px;
+
+      .info {
+        h5 {
+          margin: 0 0 0.5em 0;
+          color: rgba(0, 0, 0, 0.88);
+          font-weight: 600;
+          font-size: 16px;
+          line-height: 1.5;
+        }
+
+        p {
+          margin: 0;
+        }
+      }
+
+      .main-content {
+        .ant-form-item {
+          margin-right: 16px;
+
+          .address {
+            .ant-input-group-addon:first-child {
+              background: #d5d5d5;
+              color: rgb(153, 153, 153);
+            }
+            .ant-input-group-addon:last-child {
+              cursor: not-allowed;
+            }
+          }
+        }
+      }
+    }
+
+    .content-right {
+      width: 100%;
+      height: calc(100vh - 156px);
+      background: #f3f4f6;
+      padding: 16px 32px;
+    }
+  }
 }

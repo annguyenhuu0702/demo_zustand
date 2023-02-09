@@ -2,7 +2,7 @@ import type { MenuProps } from "antd";
 import { Layout, Menu } from "antd";
 import React from "react";
 import SideBar from "./sideBar/sideBar";
-const { Header, Sider } = Layout;
+const { Header } = Layout;
 
 export const DefaultLayout: React.FC = ({ children }: any) => {
   const items1: MenuProps["items"] = ["1", "2", "3"].map((key) => ({

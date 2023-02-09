@@ -1,43 +1,46 @@
-.custom-aside {
-  min-width: 80px !important;
-  max-width: 80px !important;
-  .ant-layout-sider-children {
-    background-color: rgb(1, 104, 250);
-    .ant-menu {
-      background-color: inherit;
-      .ant-menu-item {
-        border: 1px solid transparent;
-        &.ant-menu-item-selected {
-          background-color: rgba(29, 78, 216, 0.5);
-        }
+.main-layout {
+  min-height: calc(100vh - 46px);
+  .custom-aside {
+    min-width: 80px !important;
+    max-width: 80px !important;
+    .ant-layout-sider-children {
+      background-color: rgb(1, 104, 250);
+      .ant-menu {
+        background-color: inherit;
+        .ant-menu-item {
+          border: 1px solid transparent;
+          &.ant-menu-item-selected {
+            background-color: rgba(29, 78, 216, 0.5);
+          }
 
-        &:hover {
-          border: 1px solid rgba(96, 165, 250);
-          background: inherit;
-        }
+          &:hover {
+            border: 1px solid rgba(96, 165, 250);
+            background: inherit;
+          }
 
-        display: flex;
-        flex-direction: column;
-        height: auto;
-        align-items: center;
-        justify-content: center;
-        padding: 8px 0 !important;
-        gap: 8px;
-        font-size: 10px;
-        text-transform: uppercase;
+          display: flex;
+          flex-direction: column;
+          height: auto;
+          align-items: center;
+          justify-content: center;
+          padding: 8px 0 !important;
+          gap: 8px;
+          font-size: 10px;
+          text-transform: uppercase;
 
-        span {
-          margin: 0 !important;
-        }
+          span {
+            margin: 0 !important;
+          }
 
-        span:first-child {
-          font-size: 16px;
-          font-size: 28px;
-        }
+          span:first-child {
+            font-size: 16px;
+            font-size: 28px;
+          }
 
-        span:last-child {
-          line-height: 14px;
-          opacity: 0.8;
+          span:last-child {
+            line-height: 14px;
+            opacity: 0.8;
+          }
         }
       }
     }

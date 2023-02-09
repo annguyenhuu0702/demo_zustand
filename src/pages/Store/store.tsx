@@ -1,18 +1,16 @@
-import { Button, Form, Tabs } from "antd";
+import { Button, Popover, Tabs } from "antd";
 import "antd/dist/reset.css";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import CustomPagination from "./CustomPagination";
+import FilterForm from "./FilterForm";
 import "./index.scss";
 import TableStore from "./TableStore";
 
 const Store: React.FC = () => {
   const navigate = useNavigate();
-  const onFinish = (values: any) => {
-    console.log("Success:", values);
-  };
+  const [open, setOpen] = useState<boolean>(false);
 
-  const onFinishFailed = (errorInfo: any) => {
-    console.log("Failed:", errorInfo);
-  };
   const onChange = (key: string) => {
     console.log(key);
   };
@@ -22,6 +20,14 @@ const Store: React.FC = () => {
       label: "Tất cả",
     },
   ];
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleOpenChange = (newOpen: boolean) => {
+    setOpen(newOpen);
+  };
 
   const handleAddStore = () => {
     navigate("/store/add");
@@ -34,7 +40,13 @@ const Store: React.FC = () => {
           Thêm mới
         </Button>
       </section>
-      <section style={{ background: "#f3f4f6 " }}>
+      <section
+        style={{
+          background: "#f3f4f6",
+          display: "flex",
+          justifyContent: "space-between",
+        }}
+      >
         <div className="tabs-cus">
           <Tabs
             onChange={onChange}
@@ -48,18 +60,19 @@ const Store: React.FC = () => {
             })}
           />
           <div className="tabs-filter">
-            <Form
-              name="basic"
-              labelCol={{ span: 8 }}
-              wrapperCol={{ span: 16 }}
-              style={{ maxWidth: 600 }}
-              initialValues={{ remember: true }}
-              onFinish={onFinish}
-              onFinishFailed={onFinishFailed}
-              autoComplete="off"
-            ></Form>
-            <span>Bộ lọc tìm kiếm...</span>
+            <Popover
+              content={<FilterForm onClose={handleClose} />}
+              placement="bottomLeft"
+              trigger="click"
+              open={open}
+              onOpenChange={handleOpenChange}
+            >
+              <span>Bộ lọc tìm kiếm...</span>
+            </Popover>
           </div>
+        </div>
+        <div style={{ marginRight: 24 }}>
+          <CustomPagination />
         </div>
       </section>
       <section className="table-cus">

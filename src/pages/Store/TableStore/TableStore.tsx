@@ -1,50 +1,60 @@
 import { DeleteOutlined, ExclamationCircleOutlined } from "@ant-design/icons";
 import { Popconfirm, Space, Table } from "antd";
 import type { ColumnsType } from "antd/es/table";
+import { useNavigate } from "react-router-dom";
+import useStoreStore, { Istore } from "../../../zustand/store";
 
 const TableStore: React.FC = () => {
-  interface DataType {
-    key: string;
-    code_store: string;
-    name_store: string;
-    address: string;
-    phone: string;
-    status: boolean;
-  }
+  const navigate = useNavigate();
+  const { stores, deleteStore } = useStoreStore();
 
-  const columns: ColumnsType<DataType> = [
+  const handleStore = (record: any) => {
+    navigate(`/store/edit/${record.key}`);
+  };
+
+  const confirm = (record: any) => {
+    deleteStore(record.key);
+  };
+
+  const columns: ColumnsType<any> = [
     {
       title: "ID",
       dataIndex: "key",
       key: "id",
+      width: 80,
     },
     {
       title: "MÃ CỬA HÀNG",
       dataIndex: "code_store",
       key: "code_store",
+      width: 120,
     },
     {
       title: "TÊN CỬA HÀNG",
       dataIndex: "name_store",
       key: "name_store",
+      width: 440,
     },
     {
       title: "ĐỊA CHỈ",
       key: "address",
       dataIndex: "address",
+      width: 440,
     },
     {
       title: "ĐIỆN THOẠI",
       key: "phone",
       dataIndex: "phone",
+      width: 120,
     },
     {
       title: "TRẠNG THÁI",
       key: "status",
       dataIndex: "status",
-      render: (text: string, row: DataType) => {
+      render: (text: string, row: Istore) => {
         return <div>{row.status === true ? "Có hiệu lực" : "Vô hiệu lực"}</div>;
       },
+      width: 110,
     },
     {
       title: "",
@@ -59,7 +69,7 @@ const TableStore: React.FC = () => {
                 color: "rgb(1, 104, 250",
               }}
               onClick={() => {
-                // handleEditCategory(record);
+                handleStore(record);
               }}
             >
               Sửa
@@ -67,13 +77,13 @@ const TableStore: React.FC = () => {
             <Popconfirm
               placement="topRight"
               title={`Bạn có muốn xóa??`}
-              // onConfirm={() => {
-              //   confirm(record);
-              // }}
+              onConfirm={() => {
+                confirm(record);
+              }}
               okText="Yes"
               cancelText="No"
             >
-              <DeleteOutlined />
+              <DeleteOutlined className="icon-delete" />
             </Popconfirm>
             <ExclamationCircleOutlined style={{ cursor: "pointer" }} />
           </Space>
@@ -82,36 +92,15 @@ const TableStore: React.FC = () => {
     },
   ];
 
-  const data: DataType[] = [
-    {
-      key: "1",
-      code_store: "ONLINE",
-      name_store: "Web Manoshop",
-      address: "New York No. 1 Lake Park",
-      phone: "0947836722",
-      status: false,
-    },
-    {
-      key: "2",
-      code_store: "284LTK",
-      name_store: "284LTK",
-      address: "London No. 1 Lake Park",
-      phone: "	0987656342",
-      status: true,
-    },
-    {
-      key: "3",
-      code_store: "CHLLB",
-      name_store: "Luỹ Bán Bích",
-      address: "Sydney No. 1 Lake Park",
-      phone: "0938204249",
-      status: true,
-    },
-  ];
-
   return (
     <>
-      <Table columns={columns} dataSource={data} pagination={false} />
+      <Table
+        columns={columns}
+        dataSource={stores}
+        pagination={false}
+        size="small"
+        tableLayout="fixed"
+      />
     </>
   );
 };

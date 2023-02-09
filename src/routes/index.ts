@@ -16,4 +16,9 @@ export const publicRoute: route[] = [
     element: FormStore,
     layout: DefaultLayout,
   },
+  {
+    path: "/store/edit/:id",
+    element: FormStore,
+    layout: DefaultLayout,
+  },
 ];
